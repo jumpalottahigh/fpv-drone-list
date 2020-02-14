@@ -1,29 +1,20 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React from 'react'
+import { graphql } from 'gatsby'
+
+import Layout from '../components/Layout'
+import Table from '../components/Table'
+import './styles.scss'
 
 export default ({ data }) => {
   const { nodes: droneList } = data.droneData
 
   return (
-    <div>
-      <h1>FPV Drone List ({data.droneData.totalCount})</h1>
-      <ul>
-        {droneList.map(drone => (
-          <li key={drone.id}>
-            <span>{drone.Make}</span>
-            <span>{drone.Model}</span>
-            <span>{drone.Class}</span>
-            <span>{drone.Prop_diameter}</span>
-            <span>{drone.Motor_size}</span>
-            <span>{drone.Motor_kv}</span>
-            <span>{drone.Battery_voltage}</span>
-            <span>{drone.Battery_mAh}</span>
-            <span>{drone.Dry_Weight__g_}</span>
-            <span>{drone.field10}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Layout>
+      <h1 className="is-size-1 has-text-centered">
+        FPV Drone List ({data.droneData.totalCount})
+      </h1>
+      <Table data={droneList} />
+    </Layout>
   )
 }
 

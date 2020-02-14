@@ -3,6 +3,7 @@
   "description": "A list of BNF and PNP drones",
   "version": "0.1.0",
   "license": "MIT",
+  "author": "Georgi Yanev <georgiyanev.gy@gmail.com>",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
@@ -14,9 +15,12 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
+    "bulma": "^0.8.0",
     "gatsby": "^2.19.7",
+    "gatsby-plugin-sass": "^2.1.28",
     "gatsby-source-filesystem": "^2.1.48",
     "gatsby-transformer-csv": "^2.1.26",
+    "node-sass": "^4.13.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   },

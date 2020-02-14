@@ -8,5 +8,6 @@ module.exports = {
       },
     },
     `gatsby-transformer-csv`,
+    `gatsby-plugin-sass`,
   ],
 }
