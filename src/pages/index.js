@@ -10,9 +10,7 @@ export default ({ data }) => {
 
   return (
     <Layout>
-      <h1 className="is-size-1 has-text-centered">
-        FPV Drone List ({data.droneData.totalCount})
-      </h1>
+      <h1 className="is-size-1 has-text-centered">FPV Drone List</h1>
       <Table data={droneList} />
     </Layout>
   )
@@ -21,7 +19,6 @@ export default ({ data }) => {
 export const droneData = graphql`
   query {
     droneData: allMotorAndPropDataCsv {
-      totalCount
       nodes {
         id
         Make

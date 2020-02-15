@@ -1,18 +1,21 @@
 import React from 'react'
 import { DebounceInput } from 'react-debounce-input'
+import { sortBy } from 'lodash'
 
-const TableHeadings = () => (
+const TableHeadings = ({ onTableHeadingClick }) => (
   <tr>
-    <th>Make</th>
-    <th>Model</th>
-    <th>Class</th>
-    <th>Prop diameter</th>
-    <th>Motor size</th>
-    <th>Motor KV</th>
-    <th>Battery voltage</th>
-    <th>Battery mAh</th>
-    <th>Dry weight(g)</th>
-    <th>Product page</th>
+    <th onClick={() => onTableHeadingClick('Make')}>Make</th>
+    <th onClick={() => onTableHeadingClick('Model')}>Model</th>
+    <th onClick={() => onTableHeadingClick('Class')}>Class</th>
+    <th onClick={() => onTableHeadingClick('Prop_diameter')}>Prop diameter</th>
+    <th onClick={() => onTableHeadingClick('Motor_size')}>Motor size</th>
+    <th onClick={() => onTableHeadingClick('Motor_kv')}>Motor KV</th>
+    <th onClick={() => onTableHeadingClick('Battery_Voltage')}>
+      Battery voltage
+    </th>
+    <th onClick={() => onTableHeadingClick('Battery_mAh')}>Battery mAh</th>
+    <th onClick={() => onTableHeadingClick('Dry_Weight__g_')}>Dry weight(g)</th>
+    <th onClick={() => onTableHeadingClick('field10')}>Product page</th>
   </tr>
 )
 
@@ -49,6 +52,8 @@ export default function Table({ data }) {
   const [filteredData, setFilteredData] = React.useState([])
   const [searchedValue, setSearchedValue] = React.useState('')
 
+  console.log(data)
+
   const handleSearch = e => {
     const searchedValue = e?.target?.value
 
@@ -83,6 +88,20 @@ export default function Table({ data }) {
     setSearchedValue(searchedValue)
   }
 
+  const handleSort = (field = 'Model') => {
+    let sortedData
+    // Sort the already filtered search data
+    if (isFiltered) {
+      sortedData = sortBy(filteredData, [field, 'Make'])
+    } else {
+      // Or the full list
+      sortedData = sortBy(data, [field, 'Make'])
+    }
+
+    setFilteredData(sortedData)
+    setIsFiltered(true)
+  }
+
   return (
     <>
       <div className="field">
@@ -106,10 +125,10 @@ export default function Table({ data }) {
       </div>
       <table className="table">
         <thead>
-          <TableHeadings />
+          <TableHeadings onTableHeadingClick={handleSort} />
         </thead>
         <tfoot>
-          <TableHeadings />
+          <TableHeadings onTableHeadingClick={handleSort} />
         </tfoot>
         <TableBody data={isFiltered ? filteredData : data} />
       </table>

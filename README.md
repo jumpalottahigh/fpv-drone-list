@@ -1,6 +1,7 @@
 # FPV Drone List
 
 https://jumpalottahigh.github.io/fpv-drone-list
+
 https://fpv-drone-list.netlify.com
 
 Compare BNF and PNP quadcopters' motor size, KV, prop size, weight, class and battery size.
